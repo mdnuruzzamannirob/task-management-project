@@ -6,6 +6,7 @@ import Register from "../pages/auth/Register";
 import DashboardLayout from "../layouts/DashboardLayout";
 import UserDemographics from "../pages/userDemographics/UserDemographics";
 import PrivetRoute from "./PrivetRoute";
+import DashboardPage from "../pages/dashboard/DashboardPage";
 
 const myRoutes = createBrowserRouter([
   {
@@ -37,6 +38,12 @@ const myRoutes = createBrowserRouter([
         <DashboardLayout />
       </PrivetRoute>
     ),
+    children: [
+      {
+        index: true,
+        element: <DashboardPage />,
+      },
+    ],
   },
 ]);
 

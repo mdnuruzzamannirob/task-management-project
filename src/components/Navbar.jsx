@@ -57,7 +57,7 @@ const Navbar = () => {
   return (
     <nav className="fixed w-full z-50 bg-white">
       <Container className="flex items-center justify-between py-3 sm:py-5">
-        <h2 className="text-xl lg:text-2xl font-semibold lg:font-bold text-teal-500">
+        <h2 className="text-xl font-semibold lg:font-bold text-teal-500">
           TaskFlow
         </h2>
         <div className="hidden lg:flex items-center gap-8 font-semibold">
