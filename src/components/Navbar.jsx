@@ -21,7 +21,7 @@ const Navbar = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-indigo-700 underline underline-offset-4"
+            ? "text-teal-500 underline underline-offset-4"
             : "hover:underline underline-offset-4"
         }
       >
@@ -33,7 +33,7 @@ const Navbar = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-indigo-700 underline underline-offset-4"
+            ? "text-teal-500 underline underline-offset-4"
             : "hover:underline underline-offset-4"
         }
       >
@@ -46,7 +46,7 @@ const Navbar = () => {
             isPending
               ? "pending"
               : isActive
-              ? "text-indigo-700 underline underline-offset-4"
+              ? "text-teal-500 underline underline-offset-4"
               : "hover:underline underline-offset-4"
           }
         >
@@ -56,21 +56,23 @@ const Navbar = () => {
     </>
   );
   return (
-    <nav className="fixed w-full z-50 bg-[#F8F8FD]">
-      <Container className="flex items-center justify-between py-5">
-        <h2 className=" sm:text-xl font-semibold">Task Management Platform</h2>
-        <div className="hidden lg:flex items-center gap-8 font-Epilogue font-semibold opacity-80">
+    <nav className="fixed w-full z-50 bg-white">
+      <Container className="flex items-center justify-between py-3 sm:py-5">
+        <h2 className="text-xl lg:text-2xl font-semibold lg:font-bold text-teal-500">
+          TaskFlow
+        </h2>
+        <div className="hidden lg:flex items-center gap-8 font-semibold">
           {navLink}
           <div className="hidden lg:flex items-center">
             <Link
               to={"/login"}
-              className="text-indigo-700 font-bold hover:underline underline-offset-4"
+              className="text-teal-500 font-bold hover:underline underline-offset-4"
             >
               Login
             </Link>
             <div className="divider divider-horizontal"></div>
             <Link to={"/register"}>
-              <Button className="hover:underline underline-offset-4">
+              <Button className="hover:underline underline-offset-4 h-9">
                 Register
               </Button>
             </Link>
@@ -105,14 +107,12 @@ const Navbar = () => {
           </label>
         </div>
         <div
-          className={`lg:hidden fixed top-0 left-0 w-3/4 sm:w-2/5 h-screen z-50 bg-indigo-600 text-white px-5  transition-transform transform  ${
+          className={`lg:hidden fixed top-0 left-0 w-3/4 sm:w-2/5 h-screen z-50 bg-teal-400 text-white px-5  transition-transform transform  ${
             navOpen ? "translate-x-0" : "-translate-x-full"
           } duration-700 ease-in-out`}
         >
-          <div className="flex items-center justify-center h-[88px]">
-            <h2 className="md:text-lg font-semibold">
-              Task Management Platform
-            </h2>
+          <div className="flex items-center justify-center h-[72px] sm:h-[88px]">
+            <h2 className="text-xl font-bold">TaskFlow</h2>
           </div>
           <div className="flex flex-col gap-4 lg:hidden font-Epilogue font-semibold opacity-80 border-t py-12">
             <NavLink
@@ -121,8 +121,8 @@ const Navbar = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? "underline underline-offset-4 btn bg-indigo-800 hover:bg-indigo-800 text-white border-none"
-                  : "hover:underline underline-offset-4 btn bg-indigo-700 hover:bg-indigo-800 text-white border-none"
+                  ? "underline underline-offset-4 btn bg-teal-600 hover:bg-teal-600 text-white border-none"
+                  : "hover:underline underline-offset-4 btn bg-teal-500 hover:bg-teal-600 text-white border-none"
               }
             >
               Home
@@ -133,8 +133,8 @@ const Navbar = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? "underline underline-offset-4 btn bg-indigo-800 hover:bg-indigo-800 text-white border-none"
-                  : "hover:underline underline-offset-4 btn bg-indigo-700 hover:bg-indigo-800 text-white border-none"
+                  ? "underline underline-offset-4 btn bg-teal-600 hover:bg-teal-600 text-white border-none"
+                  : "hover:underline underline-offset-4 btn bg-teal-500 hover:bg-teal-600 text-white border-none"
               }
             >
               User Demographics
@@ -147,15 +147,15 @@ const Navbar = () => {
                     isPending
                       ? "pending"
                       : isActive
-                      ? "underline underline-offset-4 btn bg-indigo-800 hover:bg-indigo-800 text-white border-none"
-                      : "hover:underline underline-offset-4 btn bg-indigo-700 hover:bg-indigo-800 text-white border-none"
+                      ? "underline underline-offset-4 btn bg-teal-600 hover:bg-teal-600 text-white border-none"
+                      : "hover:underline underline-offset-4 btn bg-teal-500 hover:bg-teal-600 text-white border-none"
                   }
                 >
                   Dashboard
                 </NavLink>
                 <Button
                   onClick={() => logout()}
-                  className="w-full btn-md bg-indigo-700 hover:bg-indigo-800 hover:underline underline-offset-4"
+                  className="w-full btn-md bg-teal-500 hover:bg-teal-600 hover:underline underline-offset-4"
                 >
                   Log Out
                 </Button>
@@ -163,13 +163,13 @@ const Navbar = () => {
             ) : (
               <>
                 <Link to={"/login"}>
-                  <Button className="w-full btn-md bg-indigo-700 hover:bg-indigo-800 hover:underline underline-offset-4">
+                  <Button className="w-full btn-md bg-teal-500 hover:bg-teal-600 hover:underline underline-offset-4">
                     Login
                   </Button>
                 </Link>
                 <Link to={"/register"}>
                   {" "}
-                  <Button className="w-full btn-md bg-indigo-700 hover:bg-indigo-800 hover:underline underline-offset-4">
+                  <Button className="w-full btn-md bg-teal-500 hover:bg-teal-600 hover:underline underline-offset-4">
                     Register
                   </Button>
                 </Link>
