@@ -4,6 +4,7 @@ import HomePage from "../pages/home/HomePage";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import DashboardLayout from "../layouts/DashboardLayout";
+import UserDemographics from "../pages/userDemographics/UserDemographics";
 
 const myRoutes = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const myRoutes = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: "/userDemographics",
+        element: <UserDemographics />,
       },
     ],
   },
