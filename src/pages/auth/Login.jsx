@@ -13,6 +13,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Button from "../../components/Button";
 import { CiLock } from "react-icons/ci";
 import SocialLogin from "./SocialLogin";
+import { RiArrowGoBackLine } from "react-icons/ri";
 
 const Login = () => {
   const [checked, setChecked] = useState(false);
@@ -31,19 +32,24 @@ const Login = () => {
     const email = data.email;
     const password = data.password;
 
-    const toastId = toast.loading("Progress...");
     loginUser(email, password)
       .then(() => {
-        toast.success("Login Successful !", { id: toastId });
+        toast.success("Login Successful !");
         navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
-        toast.error(error.message.slice(10), { id: toastId });
+        toast.error(error.message.slice(10));
       });
   };
 
   return (
     <Container className="my-20 mx-0">
+      <div className="flex justify-center mb-10">
+        <Button onClick={() => navigate("/")}>
+          <RiArrowGoBackLine className="w-5 h-5" />
+          Go Home
+        </Button>
+      </div>
       <div
         style={{
           backgroundImage: `url(${loginBanner})`,
@@ -51,7 +57,7 @@ const Login = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
-        className="flex flex-col lg:flex-row gap-6 rounded-md p-6"
+        className="flex flex-col lg:flex-row gap-6 rounded-3xl p-6"
       >
         <div className="flex-1 text-white">
           <h1 className="text-xl font-semibold ">TaskFlow</h1>
@@ -64,7 +70,7 @@ const Login = () => {
         </div>
 
         {/* login form */}
-        <div className="flex-1 bg-white p-6 rounded-md">
+        <div className="flex-1 bg-white p-6 rounded-3xl">
           <h3 className="text-center text-lg lg:text-xl font-bold">
             Login Now
           </h3>

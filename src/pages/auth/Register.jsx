@@ -1,5 +1,6 @@
 import loginBanner from "../../assets/loginbg2.jpg";
 import {
+  RiArrowGoBackLine,
   RiCheckboxBlankCircleLine,
   RiCheckboxCircleFill,
 } from "react-icons/ri";
@@ -41,8 +42,6 @@ const Register = () => {
       setCheckedError("");
     }
 
-    const toastId = toast.loading("Progress...");
-
     createUser(email, password)
       .then(() => {
         // update profile
@@ -50,20 +49,26 @@ const Register = () => {
           displayName: name,
         })
           .then(() => {
-            toast.success("Register Successful!!!", { id: toastId });
+            toast.success("Register Successful!!!");
             navigate(location?.state ? location.state : "/");
           })
           .catch((error) => {
-            toast.error(error.message.slice(10), { id: toastId });
+            toast.error(error.message.slice(10));
           });
       })
       .catch((error) => {
-        toast.error(error.message.slice(10), { id: toastId });
+        toast.error(error.message.slice(10));
       });
   };
 
   return (
     <Container className="my-20 mx-0">
+      <div className="flex justify-center mb-10">
+        <Button onClick={() => navigate("/")}>
+          <RiArrowGoBackLine className="w-5 h-5" />
+          Go Home
+        </Button>
+      </div>
       <div
         style={{
           backgroundImage: `url(${loginBanner})`,
@@ -71,7 +76,7 @@ const Register = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
-        className="flex flex-col lg:flex-row-reverse gap-6 rounded-md p-6"
+        className="flex flex-col lg:flex-row-reverse gap-6 rounded-3xl p-6"
       >
         <div className="flex-1 text-white">
           <h1 className="text-xl font-semibold lg:text-right">TaskFlow</h1>
@@ -86,7 +91,7 @@ const Register = () => {
         </div>
 
         {/* Register form */}
-        <div className="flex-1 bg-white p-6 rounded-md">
+        <div className="flex-1 bg-white p-6 rounded-3xl">
           <h3 className="text-center text-lg lg:text-xl font-bold">
             Register Now
           </h3>

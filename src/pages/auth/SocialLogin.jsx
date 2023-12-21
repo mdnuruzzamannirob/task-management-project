@@ -11,12 +11,11 @@ const SocialLogin = () => {
   const location = useLocation();
 
   const handleSocialLogin = async (login, social) => {
-    const toastId = toast.loading("Progress...");
     try {
       const res = await login();
 
       if (res) {
-        toast.success(`${social} login Successful!!!`, { id: toastId });
+        toast.success(`${social} login Successful!!!`);
         navigate(location?.state ? location.state : "/");
       }
 
@@ -38,7 +37,7 @@ const SocialLogin = () => {
       //     }
       //   });
     } catch (error) {
-      toast.error(error.message.slice(10), { id: toastId });
+      toast.error(error.message.slice(10));
     }
   };
   return (

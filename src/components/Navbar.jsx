@@ -3,15 +3,14 @@ import Container from "./Container";
 import Button from "./Button";
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
+import { FaUser } from "react-icons/fa";
+import { RiLogoutCircleRLine } from "react-icons/ri";
 
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
+  const [toggleProfile, setToggleProfile] = useState(false);
 
-  const { user, isLoading, logout } = useAuth();
-
-  if (isLoading) {
-    return;
-  }
+  const { user, logout } = useAuth();
 
   const navLink = (
     <>
@@ -64,7 +63,36 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center gap-8 font-semibold">
           {navLink}
           {user && user?.email ? (
-            <Button onClick={() => logout()}>Log Out</Button>
+            <div className="relative">
+              {user?.photoURL ? (
+                <button
+                  onClick={() => setToggleProfile(!toggleProfile)}
+                  className="btn btn-circle overflow-hidden border-none hover:border-none bg-transparent hover:bg-transparent"
+                >
+                  <img className="w-full h-full" src={user.photoURL} alt="" />
+                </button>
+              ) : (
+                <button
+                  onClick={() => setToggleProfile(!toggleProfile)}
+                  className={`btn btn-circle border-2 ${
+                    toggleProfile
+                      ? "bg-white border-transparent hover:bg-white hover:border-transparent"
+                      : "border-sky-500 bg-transparent hover:border-sky-500 hover:bg-transparent"
+                  }`}
+                >
+                  <FaUser className="w-6 h-6 text-sky-500" />
+                </button>
+              )}
+              {toggleProfile && (
+                <div className="w-52 absolute top-16 right-0 bg-teal-400 rounded-md p-3 space-y-4 text-sm text-white text-center">
+                  <h2 title={user?.displayName}>{user?.displayName}</h2>
+                  <h2 title={user?.email}>{user?.email}</h2>
+                  <Button onClick={() => logout()} className="w-full">
+                    <RiLogoutCircleRLine /> Log Out
+                  </Button>
+                </div>
+              )}
+            </div>
           ) : (
             <div className="flex items-center">
               <Link
@@ -159,9 +187,9 @@ const Navbar = () => {
                 </NavLink>
                 <Button
                   onClick={() => logout()}
-                  className="w-full btn-md bg-teal-500 hover:bg-teal-600 hover:underline underline-offset-4"
+                  className="w-full btn-md bg-teal-500 hover:bg-teal-600 hover:underline underline-offset-4 border-none rounded-md"
                 >
-                  Log Out
+                  <RiLogoutCircleRLine className="w-5 h-5" /> Log Out
                 </Button>
               </>
             ) : (
