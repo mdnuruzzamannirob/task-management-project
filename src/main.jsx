@@ -4,9 +4,11 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import myRoutes from "./routes/myRoutes";
 import ContextProvider from "./context/ContextProvider";
+import { Toaster } from "react-hot-toast";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <Toaster />
     <ContextProvider>
       <RouterProvider router={myRoutes} />
     </ContextProvider>

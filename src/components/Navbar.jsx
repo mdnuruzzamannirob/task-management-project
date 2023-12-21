@@ -63,20 +63,24 @@ const Navbar = () => {
         </h2>
         <div className="hidden lg:flex items-center gap-8 font-semibold">
           {navLink}
-          <div className="hidden lg:flex items-center">
-            <Link
-              to={"/login"}
-              className="text-teal-500 font-bold hover:underline underline-offset-4"
-            >
-              Login
-            </Link>
-            <div className="divider divider-horizontal"></div>
-            <Link to={"/register"}>
-              <Button className="hover:underline underline-offset-4 h-9">
-                Register
-              </Button>
-            </Link>
-          </div>
+          {user && user?.email ? (
+            <Button onClick={() => logout()}>Log Out</Button>
+          ) : (
+            <div className="flex items-center">
+              <Link
+                to={"/login"}
+                className="text-teal-500 font-bold hover:underline underline-offset-4"
+              >
+                Login
+              </Link>
+              <div className="divider divider-horizontal"></div>
+              <Link to={"/register"}>
+                <Button className="hover:underline underline-offset-4 h-9">
+                  Register
+                </Button>
+              </Link>
+            </div>
+          )}
         </div>
         <div className="flex lg:hidden">
           <label className="btn btn-circle bg-white hover:bg-white/90 swap swap-rotate">
