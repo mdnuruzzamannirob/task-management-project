@@ -26,18 +26,6 @@ const Navbar = () => {
       >
         Home
       </NavLink>
-      <NavLink
-        to="/userDemographics"
-        className={({ isActive, isPending }) =>
-          isPending
-            ? "pending"
-            : isActive
-            ? "text-teal-500 underline underline-offset-4"
-            : "hover:underline underline-offset-4"
-        }
-      >
-        User Demographics
-      </NavLink>
       {user && user?.email && (
         <NavLink
           to="/dashboard"
@@ -76,8 +64,8 @@ const Navbar = () => {
                   onClick={() => setToggleProfile(!toggleProfile)}
                   className={`btn btn-circle border-2 ${
                     toggleProfile
-                      ? "bg-white border-transparent hover:bg-white hover:border-transparent"
-                      : "border-sky-500 bg-transparent hover:border-sky-500 hover:bg-transparent"
+                      ? "border-sky-500 bg-transparent hover:border-sky-500 hover:bg-transparent"
+                      : "bg-white border-transparent hover:bg-white hover:border-transparent"
                   }`}
                 >
                   <FaUser className="w-6 h-6 text-sky-500" />
@@ -159,18 +147,7 @@ const Navbar = () => {
             >
               Home
             </NavLink>
-            <NavLink
-              to="/userDemographics"
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "pending"
-                  : isActive
-                  ? "underline underline-offset-4 btn bg-teal-600 hover:bg-teal-600 text-white border-none"
-                  : "hover:underline underline-offset-4 btn bg-teal-500 hover:bg-teal-600 text-white border-none"
-              }
-            >
-              User Demographics
-            </NavLink>
+
             {user && user?.email ? (
               <>
                 <NavLink

@@ -14,7 +14,7 @@ const DashboardNavbar = () => {
   const { user, logout } = useAuth();
 
   return (
-    <div className="h-full flex items-center justify-between lg:ml-[230px] xl:ml-[300px] px-5 sm:px-10 lg:px-5 xl:px-10">
+    <div className="h-full flex items-center justify-between lg:ml-[230px] xl:ml-[300px] px-5 sm:px-10 lg:px-5 xl:px-10 z-50">
       <div>
         <div className="relative hidden lg:flex items-center">
           {user?.photoURL ? (
@@ -61,8 +61,8 @@ const DashboardNavbar = () => {
               onClick={() => setToggleProfile(!toggleProfile)}
               className={`btn btn-circle border-2 ${
                 toggleProfile
-                  ? "bg-white border-transparent hover:bg-white hover:border-transparent"
-                  : "border-sky-500 bg-transparent hover:border-sky-500 hover:bg-transparent"
+                  ? "border-sky-500 bg-transparent hover:border-sky-500 hover:bg-transparent"
+                  : "bg-white border-transparent hover:bg-white hover:border-transparent"
               }`}
             >
               <FaUser className="w-6 h-6 text-sky-500" />
@@ -110,7 +110,7 @@ const DashboardNavbar = () => {
       <div
         className={`lg:hidden fixed top-0 left-0 w-3/4 sm:w-2/5 h-screen z-50 bg-teal-400 text-white transition-transform transform  ${
           navOpen ? "translate-x-0" : "-translate-x-full"
-        } duration-700 ease-in-out z-0`}
+        } duration-700 ease-in-out z-10`}
       >
         <DashboardSidebar />
       </div>

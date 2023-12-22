@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const DashboardSidebar = () => {
   return (
-    <div className="min-h-full flex flex-col bg-teal-400 px-5 text-white">
+    <div className="min-h-full flex flex-col bg-teal-400 px-5 text-white z-50">
       <div className="flex items-center justify-center h-[72px] sm:h-[88px]">
         <h2 className="text-xl font-semibold">TaskFlow</h2>
       </div>

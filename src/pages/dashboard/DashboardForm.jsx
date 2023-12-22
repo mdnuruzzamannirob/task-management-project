@@ -2,23 +2,30 @@ import { useState } from "react";
 import Button from "../../components/Button";
 import axios from "axios";
 import { PiWarningOctagonFill } from "react-icons/pi";
+import PropTypes from "prop-types";
+import useAuth from "../../hooks/useAuth";
 
-const DashboardForm = () => {
+const DashboardForm = ({ setMessage, handleUpdateData }) => {
   const [titleError, setTitleError] = useState("");
   const [descriptionError, setDescriptionError] = useState("");
   const [dateError, setDateError] = useState("");
 
+  const { user, isLoading } = useAuth();
+
+  if (isLoading) return;
+
   const handleSubmit = (data) => {
     data.preventDefault();
-
-    const title = data.target.title.value;
-    const description = data.target.description.value;
-    const deadline = data.target.deadline.value;
-    const priority = data.target.priority.value;
+    const form = data.target;
+    const title = form.title.value;
+    const description = form.description.value;
+    const deadline = form.deadline.value;
+    const priority = form.priority.value;
 
     setTitleError("");
     setDescriptionError("");
     setDateError("");
+    setMessage("");
 
     if (title === "") {
       return setTitleError("Title is required");
@@ -30,11 +37,26 @@ const DashboardForm = () => {
       return setDateError("Deadline is required");
     }
 
-    const newTask = { title, description, deadline, priority, status: "todo" };
-    console.log(newTask);
+    const newTask = {
+      title,
+      description,
+      deadline,
+      priority,
+      status: "Todo",
+      email: user?.email,
+    };
     axios
-      .post("http://localhost:1001/api/v1/create-task", newTask)
-      .then((res) => console.log(res.data));
+      .post(
+        "https://task-management-project-server.vercel.app/api/v1/create-task",
+        newTask
+      )
+      .then((res) => {
+        if (res.data.insertedId) {
+          handleUpdateData();
+          form.reset();
+          setMessage("Task created successfully");
+        }
+      });
   };
 
   return (
@@ -44,6 +66,9 @@ const DashboardForm = () => {
           Title
         </label>
         <input
+          onBlur={() => {
+            setMessage("");
+          }}
           type=""
           name="title"
           id=""
@@ -66,6 +91,9 @@ const DashboardForm = () => {
           Description
         </label>
         <input
+          onBlur={() => {
+            setMessage("");
+          }}
           type="text"
           name="description"
           id=""
@@ -88,6 +116,9 @@ const DashboardForm = () => {
           Deadline
         </label>
         <input
+          onBlur={() => {
+            setMessage("");
+          }}
           type="date"
           name="deadline"
           id=""
@@ -109,6 +140,9 @@ const DashboardForm = () => {
           Priority
         </label>
         <select
+          onBlur={() => {
+            setMessage("");
+          }}
           name="priority"
           id=""
           className="w-full py-2 px-2 outline-none border focus:border-teal-500 rounded-md text-sm"
@@ -119,11 +153,16 @@ const DashboardForm = () => {
           <option value="High">High</option>
         </select>
       </div>
-      <Button type="submit" className="mt-8">
+      <Button type="submit" className="mt-6">
         Create Task
       </Button>
     </form>
   );
+};
+
+DashboardForm.propTypes = {
+  setMessage: PropTypes.func,
+  handleUpdateData: PropTypes.func,
 };
 
 export default DashboardForm;
