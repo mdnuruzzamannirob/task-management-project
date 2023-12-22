@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import logo from "../assets/Taskflow_logo.png";
 const Footer = () => {
   return (
     <footer className="bg-gray-950 text-white">
@@ -7,9 +8,12 @@ const Footer = () => {
           <div className="flex items-start gap-3">
             <div className="">
               {" "}
-              <h3 className="text-xl lg:text-2xl font-semibold font-clashDisplay">
-                TaskFlow
-              </h3>
+              <div className="flex items-center gap-2">
+                <img className="w-8 h-8" src={logo} alt="" />
+                <h2 className="text-xl font-semibold lg:font-bold text-teal-500">
+                  TaskFlow
+                </h2>
+              </div>
               <small>Simplify Your Day with Effortless Task Management !</small>
             </div>
           </div>

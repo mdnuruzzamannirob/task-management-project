@@ -5,6 +5,7 @@ import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { FaUser } from "react-icons/fa";
 import { RiLogoutCircleRLine } from "react-icons/ri";
+import logo from "../assets/Taskflow_logo.png";
 
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
@@ -45,9 +46,12 @@ const Navbar = () => {
   return (
     <nav className="fixed w-full z-50 bg-white">
       <Container className="flex items-center justify-between py-3 sm:py-5">
-        <h2 className="text-xl font-semibold lg:font-bold text-teal-500">
-          TaskFlow
-        </h2>
+        <div className="flex items-center gap-2">
+          <img className="w-10 h-10" src={logo} alt="" />
+          <h2 className="text-xl font-semibold lg:font-bold text-teal-500">
+            TaskFlow
+          </h2>
+        </div>
         <div className="hidden lg:flex items-center gap-8 font-semibold">
           {navLink}
           {user && user?.email ? (
@@ -127,22 +131,27 @@ const Navbar = () => {
           </label>
         </div>
         <div
-          className={`lg:hidden fixed top-0 left-0 w-3/4 sm:w-2/5 h-screen z-50 bg-teal-400 text-white px-5  transition-transform transform  ${
+          className={`lg:hidden fixed top-0 left-0 w-3/4 sm:w-2/5 h-screen z-50 bg-[#F8F8FD] text-white px-5  transition-transform transform  ${
             navOpen ? "translate-x-0" : "-translate-x-full"
           } duration-700 ease-in-out`}
         >
           <div className="flex items-center justify-center h-[72px] sm:h-[88px]">
-            <h2 className="text-xl font-bold">TaskFlow</h2>
+            <div className="flex items-center gap-2">
+              <img className="w-10 h-10" src={logo} alt="" />
+              <h2 className="text-xl font-semibold lg:font-bold text-teal-500">
+                TaskFlow
+              </h2>
+            </div>
           </div>
-          <div className="flex flex-col gap-4 lg:hidden font-Epilogue font-semibold opacity-80 border-t py-12">
+          <div className="flex flex-col gap-4 lg:hidden  font-bold border-t py-12">
             <NavLink
               to="/"
               className={({ isActive, isPending }) =>
                 isPending
                   ? "pending"
                   : isActive
-                  ? "underline underline-offset-4 btn bg-teal-600 hover:bg-teal-600 text-white border-none"
-                  : "hover:underline underline-offset-4 btn bg-teal-500 hover:bg-teal-600 text-white border-none"
+                  ? "underline underline-offset-4 btn bg-black/20 border-none text-base"
+                  : "btn bg-black/10 hover:bg-black/20 border-none text-base"
               }
             >
               Home
@@ -156,15 +165,15 @@ const Navbar = () => {
                     isPending
                       ? "pending"
                       : isActive
-                      ? "underline underline-offset-4 btn bg-teal-600 hover:bg-teal-600 text-white border-none"
-                      : "hover:underline underline-offset-4 btn bg-teal-500 hover:bg-teal-600 text-white border-none"
+                      ? "underline underline-offset-4 btn bg-black/20 text-white border-none text-base"
+                      : "btn bg-black/10 hover:bg-black/20 border-none text-black text-base"
                   }
                 >
                   Dashboard
                 </NavLink>
                 <Button
                   onClick={() => logout()}
-                  className="w-full btn-md bg-teal-500 hover:bg-teal-600 hover:underline underline-offset-4 border-none rounded-md"
+                  className="w-full btn-md bg-black/10 hover:bg-black/20 border-none rounded-md text-black"
                 >
                   <RiLogoutCircleRLine className="w-5 h-5" /> Log Out
                 </Button>
@@ -172,13 +181,13 @@ const Navbar = () => {
             ) : (
               <>
                 <Link to={"/login"}>
-                  <Button className="w-full btn-md bg-teal-500 hover:bg-teal-600 hover:underline underline-offset-4">
+                  <Button className="w-full btn-md text-black bg-black/10 hover:bg-black/20">
                     Login
                   </Button>
                 </Link>
                 <Link to={"/register"}>
                   {" "}
-                  <Button className="w-full btn-md bg-teal-500 hover:bg-teal-600 hover:underline underline-offset-4">
+                  <Button className="w-full btn-md bg-black/10 hover:bg-black/20 text-black">
                     Register
                   </Button>
                 </Link>
